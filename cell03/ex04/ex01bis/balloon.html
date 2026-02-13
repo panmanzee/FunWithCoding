@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .balloon {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        $(function() {
+            let currentSize = 200;
+            const colors = ['red', 'green', 'blue'];
+            let colorIndex = 0; 
+            
+            $("div").click(function() {
+                // (ternary) if size > 420 reset it to 200 , else size+10
+                colorIndex = (colorIndex+1)%3;
+                if (currentSize >= 415) {
+                    currentSize = 200;
+                } else {
+                    currentSize = currentSize+10;
+                }
+                $(this).css({
+                    width: currentSize,
+                    height: currentSize,
+                    backgroundColor: colors[colorIndex]
+                })
+                $("div").text(currentSize + "px");
+            });
+            
+            $("div").mouseleave(function() {
+                if (currentSize >= 205) {
+                    currentSize = currentSize-5;
+                    colorIndex = (colorIndex-1+3)%3
+                }
+                colorIndex = (currentSize >= 205) ? (colorIndex-1+3)%3 : colorIndex
+                $(this).css({
+                    width: currentSize,
+                    height: currentSize,
+                    backgroundColor: colors[colorIndex]
+                })
+                $("div").text(currentSize + "px");
+            });
+        })
+        
+    </script>
+    
+    <div class="balloon">200px</div>
+    
+</body>
+</html>

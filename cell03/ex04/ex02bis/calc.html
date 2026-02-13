@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+    </style>  
+</head>
+<body>
+    <script>
+        $(function() {
+            function checkNum(value) {
+                const num = parseInt(value);
+                return !isNaN(num) && num >= 0;
+            }
+            $("form").on("submit", calculate);
+            
+            function calculate() {
+                const leftValue = $('input[name="fnum"]').val();
+                const operator = $('select[name="operator"]').val();
+                const rightValue = $('input[name="snum"]').val();
+                
+                if (!checkNum(leftValue) || !checkNum(rightValue)) {  
+                    alert('Error :(');
+                    return;
+                }
+                
+                const left = parseInt(leftValue);
+                const right = parseInt(rightValue);
+                console.log(left)
+                console.log("hello")
+                console.log(operator)
+                let result;
+                
+                if (operator === 'plus') {
+                    result = left + right;
+                }
+                else if (operator === 'minus') {
+                    result = left - right;
+                }
+                else if (operator === 'multiple') {
+                    result = left * right;
+                }
+                else if (operator === 'devide'){
+                    if (right === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = left / right;
+                }
+                else if (operator === 'mod') {
+                    if (right === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = left % right;
+                }
+    
+                alert(result);
+                console.log({result});
+            }
+            
+            
+            setInterval(function() {
+                alert('Please, use me...');
+            }
+            , 30000);
+            
+        })
+        
+
+    </script>
+        <form>
+            <input type="text" id="fnum" name="fnum" placeholder="First number">
+            <select name="operator" id="cars">
+                <option value="plus">+</option>
+                <option value="minus">-</option>
+                <option value="multiple">*</option>
+                <option value="devide">/</option>
+                <option value="mod">%</option>
+            </select>
+            <input type="text" id="snum" name="snum" placeholder="Second number">
+            <br><br>
+            <input type="submit" value="Try me!">
+        </form>
+    
+</body>
+</html>

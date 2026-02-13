@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .balloon {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let currentSize = 200;
+        let currentColor = 'red';    
+        function clickToGrow() {
+            const balloon = document.querySelector('.balloon');
+            currentSize += 10;
+            if (currentSize > 420) {
+                currentSize = 200;
+            }
+            if (currentColor === 'red') {
+                currentColor = 'green';
+            } else if (currentColor === 'green') {
+                currentColor = 'blue';
+            } else if (currentColor === 'blue') {
+                currentColor = 'red';
+            }
+
+            balloon.style.width = currentSize + 'px';
+            balloon.style.height = currentSize + 'px';
+            balloon.style.backgroundColor = currentColor;
+            balloon.textContent = currentSize + 'px';
+        }
+        
+        function shrinkBaloon() {
+            const balloon = document.querySelector('.balloon');
+            if (currentSize >= 205) {
+                currentSize -= 5;
+                if (currentColor === 'green') {
+                    currentColor = 'red';
+                } else if (currentColor === 'blue') {
+                    currentColor = 'green';
+                } else if (currentColor === 'red') {
+                    currentColor = 'blue';
+                }
+                balloon.style.width = currentSize + 'px';
+                balloon.style.height = currentSize + 'px';
+                balloon.style.backgroundColor = currentColor;
+                balloon.textContent = currentSize + 'px';      
+            }
+        }
+    </script>
+    
+    <div onclick="clickToGrow()" onmouseleave="shrinkBaloon()" class="balloon">
+        200px
+    </div>
+    
+</body>
+</html>

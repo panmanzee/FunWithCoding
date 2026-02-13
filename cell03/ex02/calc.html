@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+    </style>  
+</head>
+<body>
+    <script>
+        function checkNum(value) {
+            const num = parseInt(value);
+            return !isNaN(num) && num >= 0;
+        }
+
+        function calculate() {
+            const leftValue = document.querySelector('input[name="fnum"]').value;
+            const operator = document.querySelector('select[name="operator"]').value;
+            const rightValue = document.querySelector('input[name="snum"]').value;
+            
+            if (!checkNum(leftValue) || !checkNum(rightValue)) {  
+                alert('Error :(');
+                return;
+            }
+            
+            const left = parseInt(leftValue);
+            const right = parseInt(rightValue);
+            let result;
+            
+            if (operator === 'plus') {
+                result = left + right;
+            }
+            else if (operator === 'minus') {
+                result = left - right;
+            }
+            else if (operator === 'multiple') {
+                result = left * right;
+            }
+            else if (operator === 'devide'){
+                if (right === 0) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+                result = left / right;
+            }
+            else if (operator === 'mod') {
+                if (right === 0) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+                result = left % right;
+            }
+
+            alert(result);
+            console.log({result});
+        }
+
+        setInterval(function() {
+            alert('Please, use me...');
+        }
+        , 30000);
+
+    </script>
+        <form>
+            <input type="text" id="fnum" name="fnum" placeholder="First number">
+            <select name="operator" id="cars">
+                <option value="plus">+</option>
+                <option value="minus">-</option>
+                <option value="multiple">*</option>
+                <option value="devide">/</option>
+                <option value="mod">%</option>
+            </select>
+            <input type="text" id="snum" name="snum" placeholder="Second number">
+            <br><br>
+            <input type="submit" onclick="calculate()" value="Try me!">
+        </form>
+    
+</body>
+</html>

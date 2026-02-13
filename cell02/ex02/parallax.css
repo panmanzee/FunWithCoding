@@ -1,0 +1,38 @@
+body {
+    background-color: black; 
+}
+
+.parallax {
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px
+}
+
+.parallax1 {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/050/393/628/small/cute-curious-gray-and-white-kitten-in-a-long-shot-photo.jpg');
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.black-section {
+    height: 500px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+}
+
+.parallax2 {
+    background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600');
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
